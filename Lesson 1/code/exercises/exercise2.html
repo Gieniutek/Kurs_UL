@@ -27,7 +27,7 @@
     <p>Number: <label id="numberLabel"></label></p>
     <p>String: <label id="stringLabel"></label></p>
     <p>Falsy: <label id="falseLabel"></label></p>
-    
+
     <button id="addBoolBtn">Add boolean</button>
     <button id="addNumberBtn">Add number</button>
     <button id="addStringBtn">Add not empty string</button>
@@ -39,25 +39,42 @@
     <script type="text/javascript">
         
         var arr = [];
+        var cb=0;
+        var cn=0;
+        var cs=0;
+        var cf=0;
         
+	        
         function countBoolean() {
+            
+            if(typeof arr[arr.length-1] == "boolean")
+            {cb=cb+1;}
             //!!!!!!!!!
-            return 0;
+            return cb;
         }
         
         function countNumber() {
+            
+            if(typeof arr[arr.length-1] == "number")
+            {cn=cn+1;}
             //!!!!!!!!!
-            return 0;
+            return typeof(arr[arr.length-1]);
         }
         
         function countString() {
+            
+            if(typeof arr[arr.length-1] == "string")
+            {cs=cs+1;}
             //!!!!!!!!!
-            return 0;
+            return cs;
         }
         
         function countFalsy() {
+            
+            if(!arr[arr.length-1])
+            {cf=cf+1;}
             //!!!!!!!!!
-            return 0;
+            return cf;
         }
         
         function refresh() {
