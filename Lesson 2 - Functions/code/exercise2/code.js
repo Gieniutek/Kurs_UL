@@ -8,8 +8,27 @@
 	mapArray = function (array, callback, ctx) {
         var newArr = [];
         
+	
+	if(ctx)
+	{
+		var cb2 = callback.bind(ctx);
+		
+		for( var i =0; i<array.length; i++)
+		{
+		
+		newArr[i] = cb2(array[i],i,array);
+		}	
+	}	
+	else
+	{
+		for( var i =0; i<array.length; i++)
+		{
+		
+			newArr[i] = callback(array[i],i,array);
+		}
+	}	
         // add code for maping
-        
+      
         return newArr;
 	};
 

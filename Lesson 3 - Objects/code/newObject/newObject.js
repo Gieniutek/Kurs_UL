@@ -3,7 +3,10 @@
 		global.UAM = {};
 	}
 
-	function newObject() {}
+	function newObject(construct, arg) {
+       // Object.getPrototypeOf(construct);
+        construct.call(arg);
+    }
 
 	global.UAM.newObject = newObject;
 }(window));

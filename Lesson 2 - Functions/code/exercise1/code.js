@@ -7,11 +7,19 @@
 
 	addManyValues = function () {
         var sum = 0;
-        
-        // !!! add all arguments to sum
+// !!! add all arguments to sum
+        		for(var i =0 ; i<arguments.length; i++)
+		{
+			sum = sum+arguments[i];
+		}
         
         // !!! return function for use sum value as a base for next arythmetic operation but without change value of sum variable
         return function() {
+		for(var j=0 ; j<arguments.length; j++)
+		{
+			sum = sum+arguments[j];
+		}
+	return sum;
         };
 	};
 
@@ -19,8 +27,8 @@
 
 }(window));
 
-/*
 
+/*
 Przykład użycia:
 
 var addRest = UAM.addManyValues(2, 3);
