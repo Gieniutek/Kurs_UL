@@ -10,7 +10,7 @@
     //////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////// Sample aircraft with sample service  /////////////// 
     
-    global.UAM.aircrafts.push({
+   /* global.UAM.aircrafts.push({
         code: 'SP-ABC',
         services: []
     });
@@ -18,30 +18,74 @@
     global.UAM.aircrafts[0].services.push({
         name: 'smth1',
         timeToExecute: 120
-    });
+    });*/
     
     //////////////////////////////////////////////////////////////////////////////////////
 
     global.UAM.addAircraft = function (newAircraftCode) {
         // function should return new aircraft object
+	
+	global.UAM.aircrafts.push({
+        code: newAircraftCode ,
+        services: []
+    	});
+    
+  	return global.UAM.aircrafts[global.UAM.aircrafts.length-1];
     };
 
     global.UAM.removeAircraft = function (aircraftObj) {
         // !!!
+
+	var i = global.UAM.aircrafts.indexOf(aircraftObj);
+	if(i>-1)
+		global.UAM.aircrafts.splice(i,1);
     };
 
     global.UAM.addWorkToAircraft = function(aircraftObj, name, timeToExxecute) {
         // !!!
+
+	var i = global.UAM.aircrafts.indexOf(aircraftObj);
+	global.UAM.aircrafts[i].services.push({
+        name: name,
+        timeToExecute: timeToExxecute
+    });
+
     };
         
-    global.UAM.reduceTimeToExecute = function(time) {
+    global.UAM.reduceTimeToExecute = function(obj , time) {
         // !!!
+
+		if(obj.services!=null)
+		for(var j =0; j<obj.services.length; j++)
+			{		
+			obj.services[j].timeToExecute-=time;
+			}
+
+
     };
     
     global.UAM.getAircraftsForRepairs = function(maxTimeToExecute) {
         // !!!
-    };
+		var arr= [];
+		for(var i =0 ; i<global.UAM.aircrafts.length;i++)
+		{
 
+			if(global.UAM.aircrafts[i].service!=null)
+			for(var j=0; j<global.UAM.aircrafts[i].service.length; j++)
+			{
+				alert(global.UAM.aircrafts[i]);
+				if(global.UAM.aircrafts[i].service[j].timeToExecute<maxTimeToExecute)
+					{
+					arr.push(global.UAM.aircrafts[i]);
+					
+					break;
+					}
+			}
+		}
+		return arr;
+		
+
+    };
 }(window));
 
 /*
