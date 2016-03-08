@@ -1,9 +1,11 @@
-(function() {
+window.addEventListener('DOMContentLoaded', function () {
 
     //Create area and ship as `div` in `document` node
-    var playArea = {}, // ??
-        ship = {}; // ??
-
+    var playArea = {}, // playArea =null;
+        ship = {}; // ship=null;
+        playArea = document.createElement("div");
+        ship = document.createElement("div");
+        
     var key = {
         right: false,
         left: false,
@@ -20,12 +22,15 @@
         shipSpeed = 4;
 
     // Add player area and ship element at the end of `document.body` element
-
+    document.body.appendChild(playArea);
+    document.body.appendChild(ship);
     // ??
     // ??
 
     // Add CSS classes accordingly ( player -> player, playArea -> playArea)
 
+    playArea.classList.add("playArea");
+    ship.classList.add("ship");
     // ??
     // ??
 
@@ -99,6 +104,8 @@
     // add event listeners observers for both `keydown` and `keyup` events
     // using 'keydown' and 'keyup' functions provided above
 
+    document.addEventListener("keyup",keyUp,false);
+    document.addEventListener("keydown",keyDown,false);
     // ??
     // ??
 
@@ -110,7 +117,7 @@
 
     loop();
 
-})();
+});
 
 // Resources
 // https://developer.mozilla.org/pl/docs/Web/API/Document/createElement
