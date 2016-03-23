@@ -14,7 +14,6 @@ app.get('/today', function (req, res) {
         res.send((new Date()).toLocaleDateString());
     }, 1000);
 });
-
 //POST /numbers should save number for later
 //GET /numbers should return comma separated list of numbers
 //DELETE /numbers should empty numbers array
